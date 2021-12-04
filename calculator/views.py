@@ -31,7 +31,7 @@ def show_recipe(request, dish: dict) -> django.http.response.HttpResponse:  # п
     """
     rec = DATA.get(dish)  # получаем словарь с данными текущего блюда
     pics = int(request.GET.get('servings', 1))  # По умолчанию 1 порция
-    print('pics', pics)
+
     rec1 = {}  # словарь для подготовки рецепта с нужным числом порций
     for key, value in rec.items():
         rec1[key] = round(value * pics, 2)
@@ -40,7 +40,7 @@ def show_recipe(request, dish: dict) -> django.http.response.HttpResponse:  # п
         'recipe': rec1,  # рецепт
         }
     print('context', context)
-    print(type(render(request, 'calculator/index.html', context)))
+
     return render(request, 'calculator/index.html', context)
 
 
